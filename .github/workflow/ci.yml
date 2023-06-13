@@ -5,45 +5,46 @@ on:
 
 permissions:
   contents: read
-  jobs:
-    lint:
-      runs-on: ubuntu-latest
-      timeout-minutes: 10
-      name: 'Lint: node-18, ubuntu-latest'
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
 
-        - name: Set node version to 18
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: 'Lint: node-18, ubuntu-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-        - name: Install deps
-          run: npm install
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-        - name: Lint
-          run: npx eslint .
+      - name: Install deps
+        run: npm install
 
-    ts-check-tests:
-      runs-on: ubuntu-latest
-      timeout-minutes: 10
-      name: 'TS-Check Tests: node-18, ubuntu-latest'
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
+      - name: Lint
+        run: npx eslint .
 
-        - name: Set node version to 18
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
+  ts-check-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: 'TS-Check Tests: node-18, ubuntu-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-        - name: Install deps
-          run: npm install
+      - name: Set node version to 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-        - name: Check tests
-          run: npx tsc --noEmit
+      - name: Install deps
+        run: npm install
+
+      - name: Check tests
+        run: npx tsc --noEmit
