@@ -9,6 +9,9 @@
     "plugin:@typescript-eslint/strict"
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "plugins": [
     "@typescript-eslint"
   ],
