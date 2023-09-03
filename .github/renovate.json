@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "schedule:earlyMondays",
+    "group:allNonMajor",
+    ":prHourlyLimitNone",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "labels": ["c: dependencies"],
+  "reviewersFromCodeOwners": true,
+  "rangeStrategy": "bump",
+  "dependencyDashboard": false,
+  "packageRules": [
+    {
+      "groupName": "devDependencies",
+      "matchDepTypes": ["devDependencies"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "dependencies",
+      "matchDepTypes": ["dependencies"],
+      "rangeStrategy": "replace"
+    },
+    {
+      "groupName": "eslint",
+      "matchPackagePrefixes": ["@typescript-eslint/", "eslint"]
+    },
+    {
+      "groupName": "typescript",
+      "matchPackageNames": ["typescript"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["c: security"]
+  }
+}
