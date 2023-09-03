@@ -9,8 +9,10 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier src --write",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "generate:sources": "ts-node ./scripts/generate-commands.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "run:dev": "ts-node src/index.ts"
   },
   "files": [
     "dist"

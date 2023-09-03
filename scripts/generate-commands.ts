@@ -14,14 +14,40 @@ const fakerTypesDirectory = join(fakerPackageDirectory, 'dist', 'types');
 const fakerModulesDirectory = join(fakerTypesDirectory, 'modules');
 const fakerFile = join(fakerTypesDirectory, 'faker.d.ts');
 
-async function generateCommandText(
+async function generateModuleCommandText(
+  name: string,
+  description: string,
+  subCommands: string[],
+): Promise<string> {
+  const simplyDescription = (description.split('\n')[0] ?? '').replace(
+    /("|`)/g,
+    '\\$1',
+  );
+
+  return format(
+    `import { Command } from 'commander';
+${subCommands
+  .map((commandName) => `import ${commandName}Command from './${commandName}';`)
+  .join('\n')}
+
+const command = new Command("${name}").description(\`${simplyDescription}\`);
+
+export default command;`,
+    {
+      ...(prettierOptions as PrettierOptions),
+      parser: 'typescript',
+    },
+  );
+}
+
+async function generateMethodCommandText(
   name: string,
   description: string,
 ): Promise<string> {
-  const simplyDescription = (description.split('\n')[0] ?? '')
-    // replaces MD links wih the plain text part
-    // .replace(/\[(.+?(?=\]))\]\(.+?(?=\))\)/g, '$1')
-    .replace(/("|`)/g, '\\$1');
+  const simplyDescription = (description.split('\n')[0] ?? '').replace(
+    /("|`)/g,
+    '\\$1',
+  );
 
   return format(
     `import { Command } from 'commander';
@@ -45,6 +71,7 @@ function getModuleFilePath(moduleName: string) {
 }
 
 async function writeModuleCommand(moduleName: string, text: string) {
+  await checkIfExistOrCreate(getModuleDir(moduleName));
   await writeFile(getModuleFilePath(moduleName), text);
 }
 
@@ -57,6 +84,7 @@ async function writeMethodCommand(
   methodName: string,
   text: string,
 ) {
+  await checkIfExistOrCreate(getModuleDir(moduleName));
   await writeFile(getMethodFilePath(moduleName, methodName), text);
 }
 
@@ -113,29 +141,29 @@ async function main() {
       .addSourceFileAtPath(fakerModuleFilePath)
       .getClassOrThrow(moduleClassName);
 
-    await checkIfExistOrCreate(getModuleDir(moduleName));
-    await writeModuleCommand(
-      moduleName,
-      await generateCommandText(
-        moduleName,
-        moduleClass.getJsDocs()[0].getCommentText() ?? '',
-      ),
-    );
-
+    const subCommands: string[] = [];
     for (const method of moduleClass.getMethods()) {
       const docs = method.getJsDocs();
       const doc = docs[docs.length - 1];
-      const description = doc.getCommentText() ?? '';
-      console.log(method.getName(), '-', description);
-      const params = doc
-        .getTags()
-        .filter((tag) => tag.isKind(SyntaxKind.JSDocParameterTag));
-      console.group();
-      for (const param of params) {
-        console.log(param.getTagName(), param.getCommentText());
-      }
-      console.groupEnd();
+      const methodName = method.getName();
+      const methodDescription = doc.getCommentText() ?? '';
+      console.log(method.getName(), '-', methodDescription);
+      await writeMethodCommand(
+        moduleName,
+        methodName,
+        await generateMethodCommandText(methodName, methodDescription),
+      );
+      subCommands.push(methodName);
     }
+
+    await writeModuleCommand(
+      moduleName,
+      await generateModuleCommandText(
+        moduleName,
+        moduleClass.getJsDocs()[0].getCommentText() ?? '',
+        subCommands,
+      ),
+    );
     console.groupEnd();
   }
 }
