@@ -1,8 +1,9 @@
 import { mkdir, stat, writeFile } from 'fs/promises';
 import { join, resolve } from 'path';
 import { Options as PrettierOptions, format } from 'prettier';
-import { Project, Scope, SyntaxKind } from 'ts-morph';
+import { Project, Scope } from 'ts-morph';
 import prettierOptions from '../.prettierrc.json';
+import { isDeprecated } from './jsdoc-helper';
 
 const rootDirectory = resolve(__dirname, '..');
 const fakerPackageDirectory = join(
@@ -30,7 +31,13 @@ ${subCommands
   .map((commandName) => `import ${commandName}Command from './${commandName}';`)
   .join('\n')}
 
-const command = new Command("${name}").description(\`${simplyDescription}\`);
+const command = new Command("${name}")
+  .description(\`${simplyDescription}\`)
+  ${
+    subCommands
+      .map((commandName) => `.addCommand(${commandName}Command)`)
+      .join('\n') + ';'
+  }
 
 export default command;`,
     {
@@ -41,7 +48,8 @@ export default command;`,
 }
 
 async function generateMethodCommandText(
-  name: string,
+  moduleName: string,
+  methodName: string,
   description: string,
 ): Promise<string> {
   const simplyDescription = (description.split('\n')[0] ?? '').replace(
@@ -51,10 +59,15 @@ async function generateMethodCommandText(
 
   return format(
     `import { Command } from 'commander';
+import { faker } from '@faker-js/faker';
 
-  const command = new Command("${name}").description(\`${simplyDescription}\`);
+const command = new Command("${methodName}")
+  .description(\`${simplyDescription}\`)
+  .action(() => {
+    console.log(faker['${moduleName}']['${methodName}']());
+  });
 
-  export default command;`,
+export default command;`,
     {
       ...(prettierOptions as PrettierOptions),
       parser: 'typescript',
@@ -103,33 +116,25 @@ async function main() {
   const file = project.addSourceFileAtPath(fakerFile);
   const faker = file.getClassOrThrow('Faker');
   for (const module of faker.getProperties()) {
+    const moduleName = module.getName();
     if (module.getScope() !== Scope.Public) {
       continue;
     }
 
-    if (
-      module
-        .getJsDocs()
-        .some((doc) =>
-          doc
-            .getTags()
-            .some((tag) => tag.isKind(SyntaxKind.JSDocDeprecatedTag)),
-        )
-    ) {
+    if (module.getJsDocs().some(isDeprecated)) {
       continue;
     }
 
     const definitionsNames = ['rawDefinitions', 'definitions'];
-    if (definitionsNames.includes(module.getName())) {
+    if (definitionsNames.includes(moduleName)) {
       continue;
     }
 
     const unusableModules = ['helpers'];
-    if (unusableModules.includes(module.getName())) {
+    if (unusableModules.includes(moduleName)) {
       continue;
     }
 
-    const moduleName = module.getName();
     console.group(moduleName);
     const fakerModuleFilePath = join(
       fakerModulesDirectory,
@@ -141,19 +146,32 @@ async function main() {
       .addSourceFileAtPath(fakerModuleFilePath)
       .getClassOrThrow(moduleClassName);
 
-    const subCommands: string[] = [];
+    const subCommands = new Set<string>();
     for (const method of moduleClass.getMethods()) {
+      const methodName = method.getName();
+      const brokenMethods = ['between', 'betweens', 'fromCharacters'];
+      if (brokenMethods.includes(methodName)) {
+        continue;
+      }
+
+      if (subCommands.has(methodName)) {
+        continue;
+      }
+
       const docs = method.getJsDocs();
       const doc = docs[docs.length - 1];
-      const methodName = method.getName();
       const methodDescription = doc.getCommentText() ?? '';
       console.log(method.getName(), '-', methodDescription);
       await writeMethodCommand(
         moduleName,
         methodName,
-        await generateMethodCommandText(methodName, methodDescription),
+        await generateMethodCommandText(
+          moduleName,
+          methodName,
+          methodDescription,
+        ),
       );
-      subCommands.push(methodName);
+      subCommands.add(methodName);
     }
 
     await writeModuleCommand(
@@ -161,7 +179,7 @@ async function main() {
       await generateModuleCommandText(
         moduleName,
         moduleClass.getJsDocs()[0].getCommentText() ?? '',
-        subCommands,
+        [...subCommands],
       ),
     );
     console.groupEnd();
