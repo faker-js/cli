@@ -10,6 +10,7 @@
   "labels": ["c: dependencies"],
   "reviewersFromCodeOwners": true,
   "rangeStrategy": "bump",
+  "dependencyDashboard": false,
   "packageRules": [
     {
       "groupName": "devDependencies",
