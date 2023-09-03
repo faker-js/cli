@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier src --write"
   },
   "keywords": [
     "faker",
