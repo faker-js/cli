@@ -6,10 +6,13 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "outDir": "dist",
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
     "useUnknownInCatchVariables": true
   },
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts"
+  ]
 }
