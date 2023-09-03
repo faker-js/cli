@@ -27,6 +27,10 @@
       "matchPackagePrefixes": ["@typescript-eslint/", "eslint"]
     },
     {
+      "groupName": "prettier",
+      "matchPackagePrefixes": ["prettier"]
+    },
+    {
       "groupName": "typescript",
       "matchPackageNames": ["typescript"]
     }
