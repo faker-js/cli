@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import { description, version } from '../package.json';
+import commands from './commands';
 
 const program = new Command()
   .name('faker')
@@ -7,9 +8,8 @@ const program = new Command()
   .description(description)
   .usage('faker [options] module_name entry_name');
 
-const commands: Command[] = [];
 for (const command of commands) {
-  // implement sub commands
+  program.addCommand(command);
 }
 
 program.parse(process.argv);
