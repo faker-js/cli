@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "format": "prettier src --write",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier src --write"
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "faker",
