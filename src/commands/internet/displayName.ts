@@ -6,7 +6,7 @@ const command = new Command('displayName')
     `Generates a display name using the given person's name as base.`,
   )
   .action(() => {
-    console.log(faker['internet']['displayName']());
+    console.log(faker.internet.displayName());
   });
 
 export default command;

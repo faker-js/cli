@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('cmyk')
   .description(`Returns a CMYK color.`)
   .action(() => {
-    console.log(faker['color']['cmyk']());
+    console.log(faker.color.cmyk());
   });
 
 export default command;

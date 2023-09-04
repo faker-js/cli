@@ -6,7 +6,7 @@ const command = new Command('sample')
     `Returns a string containing UTF-16 chars between 33 and 125 (\`!\` to \`}\`).`,
   )
   .action(() => {
-    console.log(faker['string']['sample']());
+    console.log(faker.string.sample());
   });
 
 export default command;

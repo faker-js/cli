@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('iban')
   .description(`Generates a random iban.`)
   .action(() => {
-    console.log(faker['finance']['iban']());
+    console.log(faker.finance.iban());
   });
 
 export default command;

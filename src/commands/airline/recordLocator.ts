@@ -6,7 +6,7 @@ const command = new Command('recordLocator')
     `Generates a random [record locator](https://en.wikipedia.org/wiki/Record_locator). Record locators`,
   )
   .action(() => {
-    console.log(faker['airline']['recordLocator']());
+    console.log(faker.airline.recordLocator());
   });
 
 export default command;

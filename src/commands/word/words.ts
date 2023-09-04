@@ -6,7 +6,7 @@ const command = new Command('words')
     `Returns a string containing a number of space separated random words.`,
   )
   .action(() => {
-    console.log(faker['word']['words']());
+    console.log(faker.word.words());
   });
 
 export default command;

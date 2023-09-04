@@ -6,7 +6,7 @@ const command = new Command('preposition')
     `Returns a preposition of random or optionally specified length.`,
   )
   .action(() => {
-    console.log(faker['word']['preposition']());
+    console.log(faker.word.preposition());
   });
 
 export default command;

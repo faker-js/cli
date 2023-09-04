@@ -6,7 +6,7 @@ const command = new Command('nearbyGPSCoordinate')
     `Generates a random GPS coordinate within the specified radius from the given coordinate.`,
   )
   .action(() => {
-    console.log(faker['location']['nearbyGPSCoordinate']());
+    console.log(faker.location.nearbyGPSCoordinate());
   });
 
 export default command;

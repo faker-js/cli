@@ -6,7 +6,7 @@ const command = new Command('octal')
     `Returns an [octal](https://en.wikipedia.org/wiki/Octal) string.`,
   )
   .action(() => {
-    console.log(faker['string']['octal']());
+    console.log(faker.string.octal());
   });
 
 export default command;

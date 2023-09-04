@@ -6,7 +6,7 @@ const command = new Command('hexadecimal')
     `Returns a [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) number.`,
   )
   .action(() => {
-    console.log(faker['datatype']['hexadecimal']());
+    console.log(faker.datatype.hexadecimal());
   });
 
 export default command;

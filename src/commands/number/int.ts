@@ -6,7 +6,7 @@ const command = new Command('int')
     `Returns a single random integer between zero and the given max value or the given range.`,
   )
   .action(() => {
-    console.log(faker['number']['int']());
+    console.log(faker.number.int());
   });
 
 export default command;

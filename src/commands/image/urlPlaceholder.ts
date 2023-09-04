@@ -6,7 +6,7 @@ const command = new Command('urlPlaceholder')
     `Generates a random image url provided via https://via.placeholder.com/.`,
   )
   .action(() => {
-    console.log(faker['image']['urlPlaceholder']());
+    console.log(faker.image.urlPlaceholder());
   });
 
 export default command;

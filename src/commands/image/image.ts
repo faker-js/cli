@@ -6,7 +6,7 @@ const command = new Command('image')
     `Generates a random image url from one of the supported categories.`,
   )
   .action(() => {
-    console.log(faker['image']['image']());
+    console.log(faker.image.image());
   });
 
 export default command;

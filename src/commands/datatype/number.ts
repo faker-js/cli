@@ -6,7 +6,7 @@ const command = new Command('number')
     `Returns a single random number between zero and the given max value or the given range with the specified precision.`,
   )
   .action(() => {
-    console.log(faker['datatype']['number']());
+    console.log(faker.datatype.number());
   });
 
 export default command;

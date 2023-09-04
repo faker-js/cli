@@ -6,7 +6,7 @@ const command = new Command('ingverb')
     `Returns a random hacker/IT verb for continuous actions (en: ing suffix; e.g. hacking).`,
   )
   .action(() => {
-    console.log(faker['hacker']['ingverb']());
+    console.log(faker.hacker.ingverb());
   });
 
 export default command;

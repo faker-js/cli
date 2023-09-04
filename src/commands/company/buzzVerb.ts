@@ -6,7 +6,7 @@ const command = new Command('buzzVerb')
     `Returns a random buzz verb that can be used to demonstrate data being viewed by a manager.`,
   )
   .action(() => {
-    console.log(faker['company']['buzzVerb']());
+    console.log(faker.company.buzzVerb());
   });
 
 export default command;

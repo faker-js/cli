@@ -6,7 +6,7 @@ const command = new Command('buzzNoun')
     `Returns a random buzz noun that can be used to demonstrate data being viewed by a manager.`,
   )
   .action(() => {
-    console.log(faker['company']['buzzNoun']());
+    console.log(faker.company.buzzNoun());
   });
 
 export default command;

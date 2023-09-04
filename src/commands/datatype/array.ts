@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('array')
   .description(`Returns an array with random strings and numbers.`)
   .action(() => {
-    console.log(faker['datatype']['array']());
+    console.log(faker.datatype.array());
   });
 
 export default command;

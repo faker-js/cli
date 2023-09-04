@@ -6,7 +6,7 @@ const command = new Command('bigInt')
     `Returns a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#bigint_type) number.`,
   )
   .action(() => {
-    console.log(faker['number']['bigInt']());
+    console.log(faker.number.bigInt());
   });
 
 export default command;

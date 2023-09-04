@@ -6,7 +6,7 @@ const command = new Command('catchPhraseNoun')
     `Returns a random catch phrase noun that can be displayed to an end user..`,
   )
   .action(() => {
-    console.log(faker['company']['catchPhraseNoun']());
+    console.log(faker.company.catchPhraseNoun());
   });
 
 export default command;

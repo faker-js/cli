@@ -6,7 +6,7 @@ const command = new Command('flightNumber')
     `Returns a random flight number. Flight numbers are always 1 to 4 digits long. Sometimes they are`,
   )
   .action(() => {
-    console.log(faker['airline']['flightNumber']());
+    console.log(faker.airline.flightNumber());
   });
 
 export default command;

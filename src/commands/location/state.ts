@@ -6,7 +6,7 @@ const command = new Command('state')
     `Returns a random localized state, or other equivalent first-level administrative entity for the locale's country such as a province or region.`,
   )
   .action(() => {
-    console.log(faker['location']['state']());
+    console.log(faker.location.state());
   });
 
 export default command;

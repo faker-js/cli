@@ -6,7 +6,7 @@ const command = new Command('county')
     `Returns a random localized county, or other equivalent second-level administrative entity for the locale's country such as a district or department.`,
   )
   .action(() => {
-    console.log(faker['location']['county']());
+    console.log(faker.location.county());
   });
 
 export default command;

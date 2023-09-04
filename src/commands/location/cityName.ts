@@ -6,7 +6,7 @@ const command = new Command('cityName')
     `Returns a random city name from a list of real cities for the locale.`,
   )
   .action(() => {
-    console.log(faker['location']['cityName']());
+    console.log(faker.location.cityName());
   });
 
 export default command;

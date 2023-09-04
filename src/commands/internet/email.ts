@@ -6,7 +6,7 @@ const command = new Command('email')
     `Generates an email address using the given person's name as base.`,
   )
   .action(() => {
-    console.log(faker['internet']['email']());
+    console.log(faker.internet.email());
   });
 
 export default command;

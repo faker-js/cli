@@ -6,7 +6,7 @@ const command = new Command('lines')
     `Generates the given number lines of lorem separated by \`'\n'\`.`,
   )
   .action(() => {
-    console.log(faker['lorem']['lines']());
+    console.log(faker.lorem.lines());
   });
 
 export default command;

@@ -6,7 +6,7 @@ const command = new Command('sentence')
     `Generates a space separated list of words beginning with a capital letter and ending with a period.`,
   )
   .action(() => {
-    console.log(faker['lorem']['sentence']());
+    console.log(faker.lorem.sentence());
   });
 
 export default command;

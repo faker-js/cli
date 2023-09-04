@@ -6,7 +6,7 @@ const command = new Command('conjunction')
     `Returns a conjunction of random or optionally specified length.`,
   )
   .action(() => {
-    console.log(faker['word']['conjunction']());
+    console.log(faker.word.conjunction());
   });
 
 export default command;

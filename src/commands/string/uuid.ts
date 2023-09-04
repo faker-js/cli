@@ -6,7 +6,7 @@ const command = new Command('uuid')
     `Returns a UUID v4 ([Universally Unique Identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier)).`,
   )
   .action(() => {
-    console.log(faker['string']['uuid']());
+    console.log(faker.string.uuid());
   });
 
 export default command;

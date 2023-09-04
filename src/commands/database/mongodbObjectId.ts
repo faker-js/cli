@@ -6,7 +6,7 @@ const command = new Command('mongodbObjectId')
     `Returns a MongoDB [ObjectId](https://docs.mongodb.com/manual/reference/method/ObjectId/) string.`,
   )
   .action(() => {
-    console.log(faker['database']['mongodbObjectId']());
+    console.log(faker.database.mongodbObjectId());
   });
 
 export default command;

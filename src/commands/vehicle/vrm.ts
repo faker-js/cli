@@ -6,7 +6,7 @@ const command = new Command('vrm')
     `Returns a vehicle registration number (Vehicle Registration Mark - VRM)`,
   )
   .action(() => {
-    console.log(faker['vehicle']['vrm']());
+    console.log(faker.vehicle.vrm());
   });
 
 export default command;

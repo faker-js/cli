@@ -6,7 +6,7 @@ const command = new Command('commonFileName')
     `Returns a random file name with a given extension or a commonly used extension.`,
   )
   .action(() => {
-    console.log(faker['system']['commonFileName']());
+    console.log(faker.system.commonFileName());
   });
 
 export default command;

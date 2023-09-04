@@ -6,7 +6,7 @@ const command = new Command('currency')
     `Returns a random currency object, containing \`code\`, \`name \`and \`symbol\` properties.`,
   )
   .action(() => {
-    console.log(faker['finance']['currency']());
+    console.log(faker.finance.currency());
   });
 
 export default command;

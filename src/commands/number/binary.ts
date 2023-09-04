@@ -6,7 +6,7 @@ const command = new Command('binary')
     `Returns a [binary](https://en.wikipedia.org/wiki/Binary_number) number.`,
   )
   .action(() => {
-    console.log(faker['number']['binary']());
+    console.log(faker.number.binary());
   });
 
 export default command;

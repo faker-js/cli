@@ -6,7 +6,7 @@ const command = new Command('zipCode')
     `Generates random zip code from specified format. If format is not specified,`,
   )
   .action(() => {
-    console.log(faker['location']['zipCode']());
+    console.log(faker.location.zipCode());
   });
 
 export default command;

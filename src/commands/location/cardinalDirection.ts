@@ -6,7 +6,7 @@ const command = new Command('cardinalDirection')
     `Returns a random cardinal direction (north, east, south, west).`,
   )
   .action(() => {
-    console.log(faker['location']['cardinalDirection']());
+    console.log(faker.location.cardinalDirection());
   });
 
 export default command;

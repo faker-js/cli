@@ -6,7 +6,7 @@ const command = new Command('symbol')
     `Returns a string containing only special characters from the following list:`,
   )
   .action(() => {
-    console.log(faker['string']['symbol']());
+    console.log(faker.string.symbol());
   });
 
 export default command;

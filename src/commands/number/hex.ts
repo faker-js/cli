@@ -6,7 +6,7 @@ const command = new Command('hex')
     `Returns a lowercase [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) number.`,
   )
   .action(() => {
-    console.log(faker['number']['hex']());
+    console.log(faker.number.hex());
   });
 
 export default command;

@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('domainName')
   .description(`Generates a random domain name.`)
   .action(() => {
-    console.log(faker['internet']['domainName']());
+    console.log(faker.internet.domainName());
   });
 
 export default command;

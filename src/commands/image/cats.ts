@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('cats')
   .description(`Generates a random cat image url.`)
   .action(() => {
-    console.log(faker['image']['cats']());
+    console.log(faker.image.cats());
   });
 
 export default command;

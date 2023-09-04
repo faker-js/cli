@@ -6,7 +6,7 @@ const command = new Command('color')
     `Generates a random css hex color code in aesthetically pleasing color palette.`,
   )
   .action(() => {
-    console.log(faker['internet']['color']());
+    console.log(faker.internet.color());
   });
 
 export default command;

@@ -6,7 +6,7 @@ const command = new Command('interjection')
     `Returns an interjection of random or optionally specified length.`,
   )
   .action(() => {
-    console.log(faker['word']['interjection']());
+    console.log(faker.word.interjection());
   });
 
 export default command;

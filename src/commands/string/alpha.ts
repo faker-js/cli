@@ -6,7 +6,7 @@ const command = new Command('alpha')
     `Generating a string consisting of letters in the English alphabet.`,
   )
   .action(() => {
-    console.log(faker['string']['alpha']());
+    console.log(faker.string.alpha());
   });
 
 export default command;

@@ -6,7 +6,7 @@ const command = new Command('amount')
     `Generates a random amount between the given bounds (inclusive).`,
   )
   .action(() => {
-    console.log(faker['finance']['amount']());
+    console.log(faker.finance.amount());
   });
 
 export default command;

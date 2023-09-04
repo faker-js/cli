@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const command = new Command('colorByCSSColorSpace')
   .description(`Returns a random color based on CSS color space specified.`)
   .action(() => {
-    console.log(faker['color']['colorByCSSColorSpace']());
+    console.log(faker.color.colorByCSSColorSpace());
   });
 
 export default command;

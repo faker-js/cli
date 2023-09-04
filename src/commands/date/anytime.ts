@@ -6,7 +6,7 @@ const command = new Command('anytime')
     `Generates a random date that can be either in the past or in the future.`,
   )
   .action(() => {
-    console.log(faker['date']['anytime']());
+    console.log(faker.date.anytime());
   });
 
 export default command;

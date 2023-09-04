@@ -6,7 +6,7 @@ const command = new Command('slug')
     `Generates a slugified text consisting of the given number of hyphen separated words.`,
   )
   .action(() => {
-    console.log(faker['lorem']['slug']());
+    console.log(faker.lorem.slug());
   });
 
 export default command;

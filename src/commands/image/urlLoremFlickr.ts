@@ -6,7 +6,7 @@ const command = new Command('urlLoremFlickr')
     `Generates a random image url provided via https://loremflickr.com.`,
   )
   .action(() => {
-    console.log(faker['image']['urlLoremFlickr']());
+    console.log(faker.image.urlLoremFlickr());
   });
 
 export default command;

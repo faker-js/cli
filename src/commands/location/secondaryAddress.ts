@@ -6,7 +6,7 @@ const command = new Command('secondaryAddress')
     `Generates a random localized secondary address. This refers to a specific location at a given address`,
   )
   .action(() => {
-    console.log(faker['location']['secondaryAddress']());
+    console.log(faker.location.secondaryAddress());
   });
 
 export default command;

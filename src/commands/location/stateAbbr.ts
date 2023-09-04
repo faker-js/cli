@@ -6,7 +6,7 @@ const command = new Command('stateAbbr')
     `Returns a random localized state's abbreviated name from this country.`,
   )
   .action(() => {
-    console.log(faker['location']['stateAbbr']());
+    console.log(faker.location.stateAbbr());
   });
 
 export default command;

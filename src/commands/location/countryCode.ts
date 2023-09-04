@@ -6,7 +6,7 @@ const command = new Command('countryCode')
     `Returns a random [ISO_3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country code.`,
   )
   .action(() => {
-    console.log(faker['location']['countryCode']());
+    console.log(faker.location.countryCode());
   });
 
 export default command;

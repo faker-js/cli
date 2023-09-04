@@ -6,7 +6,7 @@ const command = new Command('ordinalDirection')
     `Returns a random ordinal direction (northwest, southeast, etc).`,
   )
   .action(() => {
-    console.log(faker['location']['ordinalDirection']());
+    console.log(faker.location.ordinalDirection());
   });
 
 export default command;

@@ -6,7 +6,7 @@ const command = new Command('datetime')
     `Returns a Date object using a random number of milliseconds since`,
   )
   .action(() => {
-    console.log(faker['datatype']['datetime']());
+    console.log(faker.datatype.datetime());
   });
 
 export default command;

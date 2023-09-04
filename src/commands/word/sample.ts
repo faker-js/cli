@@ -6,7 +6,7 @@ const command = new Command('sample')
     `Returns a random sample of random or optionally specified length.`,
   )
   .action(() => {
-    console.log(faker['word']['sample']());
+    console.log(faker.word.sample());
   });
 
 export default command;

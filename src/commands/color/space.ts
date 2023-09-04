@@ -6,7 +6,7 @@ const command = new Command('space')
     `Returns a random color space name from the worldwide accepted color spaces.`,
   )
   .action(() => {
-    console.log(faker['color']['space']());
+    console.log(faker.color.space());
   });
 
 export default command;
