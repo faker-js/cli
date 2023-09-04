@@ -12,6 +12,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "faker",
     "faker.js",
