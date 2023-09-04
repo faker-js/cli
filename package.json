@@ -41,6 +41,7 @@
       "url": "https://opencollective.com/fakerjs"
     }
   ],
+  "bugs": "https://github.com/faker-js/cli/issues",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.6.0",
