@@ -9,8 +9,8 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier src --write",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "files": [
     "dist"
