@@ -2,18 +2,29 @@
   "name": "@faker-js/cli",
   "version": "0.0.0",
   "description": "A CLI of @faker-js/faker.",
-  "main": "dist/index.js",
+  "bin": {
+    "@faker-js/cli": "bin/faker.js",
+    "faker": "bin/faker.js"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier src --write",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "faker",
     "faker.js",
     "fakerjs",
     "faker-js",
+    "cli",
+    "faker-cli",
+    "faker.js-cli",
+    "fakerjs-cli",
+    "faker-js-cli",
     "fake data generator",
     "fake data",
     "fake-data",
@@ -25,8 +36,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/faker-js/faker.git"
+    "url": "https://github.com/faker-js/cli.git"
   },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/fakerjs"
+    }
+  ],
+  "bugs": "https://github.com/faker-js/cli/issues",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.6.0",
@@ -34,5 +52,9 @@
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
     "typescript": "~5.2.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "commander": "^11.0.0"
   }
 }
