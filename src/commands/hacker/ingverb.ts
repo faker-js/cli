@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 
 const command = new Command('ingverb')
   .description(
-    `Returns a random hacker/IT verb for continuous actions (en: ing suffix; e.g. hacking).`,
+    `Generates a random hacker/IT verb for continuous actions (en: ing suffix; e.g. hacking).`,
   )
   .action(() => {
     console.log(faker.hacker.ingverb());

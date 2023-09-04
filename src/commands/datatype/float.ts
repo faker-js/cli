@@ -3,10 +3,10 @@ import { faker } from '@faker-js/faker';
 
 const command = new Command('float')
   .description(
-    `Returns a single random floating-point number for the given precision or range and precision.`,
+    `Generates a single random floating-point number between zero and 99999.`,
   )
   .action(() => {
-    console.log(faker.datatype.float());
+    console.log(faker.datatype.float({}));
   });
 
 export default command;

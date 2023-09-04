@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { faker } from '@faker-js/faker';
 
 const command = new Command('adverb')
-  .description(`Returns an adverb of random or optionally specified length.`)
+  .description(`Generates an adverb of random length.`)
   .action(() => {
     console.log(faker.word.adverb());
   });

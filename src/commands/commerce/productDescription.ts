@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { faker } from '@faker-js/faker';
 
 const command = new Command('productDescription')
-  .description(`Returns a product description.`)
+  .description(`Generates a product description.`)
   .action(() => {
     console.log(faker.commerce.productDescription());
   });

@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import { faker } from '@faker-js/faker';
 
 const command = new Command('price')
-  .description(`Generates a price between min and max (inclusive).`)
+  .description(`Generates a price.`)
   .action(() => {
     console.log(faker.commerce.price());
   });

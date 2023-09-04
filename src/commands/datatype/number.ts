@@ -2,9 +2,7 @@ import { Command } from 'commander';
 import { faker } from '@faker-js/faker';
 
 const command = new Command('number')
-  .description(
-    `Returns a single random number between zero and the given max value or the given range with the specified precision.`,
-  )
+  .description(`Generates a single random number between zero and 99999.`)
   .action(() => {
     console.log(faker.datatype.number());
   });

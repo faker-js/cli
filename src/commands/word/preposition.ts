@@ -2,9 +2,7 @@ import { Command } from 'commander';
 import { faker } from '@faker-js/faker';
 
 const command = new Command('preposition')
-  .description(
-    `Returns a preposition of random or optionally specified length.`,
-  )
+  .description(`Generates a preposition of random length.`)
   .action(() => {
     console.log(faker.word.preposition());
   });
