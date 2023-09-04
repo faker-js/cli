@@ -2,7 +2,10 @@
   "name": "@faker-js/cli",
   "version": "0.0.0",
   "description": "A CLI of @faker-js/faker.",
-  "main": "dist/index.js",
+  "bin": {
+    "@faker-js/cli": "bin/faker.js",
+    "faker": "bin/faker.js"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier src --write",
