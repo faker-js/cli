@@ -10,7 +10,8 @@
     "build": "tsc",
     "format": "prettier src --write",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "test": "vitest"
   },
   "files": [
     "dist"
