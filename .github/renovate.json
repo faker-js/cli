@@ -14,13 +14,11 @@
   "packageRules": [
     {
       "groupName": "devDependencies",
-      "matchDepTypes": ["devDependencies"],
-      "rangeStrategy": "bump"
+      "matchDepTypes": ["devDependencies"]
     },
     {
       "groupName": "dependencies",
-      "matchDepTypes": ["dependencies"],
-      "rangeStrategy": "replace"
+      "matchDepTypes": ["dependencies"]
     },
     {
       "groupName": "eslint",
