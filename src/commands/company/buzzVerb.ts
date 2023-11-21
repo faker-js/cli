@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('buzzVerb')
   .description(
-    `Generates a random buzz verb that can be used to demonstrate data being viewed by a manager.`,
+    `Returns a random buzz verb that can be used to demonstrate data being viewed by a manager.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.company.buzzVerb());
   });
 

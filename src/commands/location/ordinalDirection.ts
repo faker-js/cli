@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('ordinalDirection')
   .description(
-    `Generates a random ordinal direction (northwest, southeast, etc).`,
+    `Returns a random ordinal direction (northwest, southeast, etc).`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.location.ordinalDirection());
   });
 

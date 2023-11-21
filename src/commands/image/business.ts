@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('business')
   .description(`Generates a random business image url.`)
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.image.business());
   });
 

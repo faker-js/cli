@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('vehicle')
-  .description(`Generates a random vehicle.`)
-  .action(() => {
+  .description(`Returns a random vehicle.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.vehicle.vehicle());
   });
 

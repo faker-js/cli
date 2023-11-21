@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('suffixes')
-  .description(`Generates an array with possible company name suffixes.`)
-  .action(() => {
+  .description(`Returns an array with possible company name suffixes.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.company.suffixes());
   });
 

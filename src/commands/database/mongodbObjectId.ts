@@ -1,9 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('mongodbObjectId')
-  .description(`Generates a MongoDB ObjectId string.`)
-  .action(() => {
+  .description(
+    `Returns a MongoDB [ObjectId](https://docs.mongodb.com/manual/reference/method/ObjectId/) string.`,
+  )
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.database.mongodbObjectId());
   });
 

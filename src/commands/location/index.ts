@@ -23,7 +23,8 @@ import timeZoneCommand from './timeZone';
 
 const command = new Command('location')
   .description(
-    `Module to generate addresses and locations. Prior to Faker 8.0.0, this module was known as \`faker.address\`.`,
+    `Module to generate addresses and locations. Prior to Faker 8.0.0, this module was known as \`faker.address\`.
+`,
   )
   .addCommand(zipCodeCommand)
   .addCommand(zipCodeByStateCommand)

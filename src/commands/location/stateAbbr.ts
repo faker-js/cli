@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('stateAbbr')
   .description(
-    `Generates a random localized state's abbreviated name from this country.`,
+    `Returns a random localized state's abbreviated name from this country.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.location.stateAbbr());
   });
 

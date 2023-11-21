@@ -8,7 +8,10 @@ import aircraftTypeCommand from './aircraftType';
 import flightNumberCommand from './flightNumber';
 
 const command = new Command('airline')
-  .description(`Module to generate airline and airport related data.`)
+  .description(
+    `Module to generate airline and airport related data.
+`,
+  )
   .addCommand(airportCommand)
   .addCommand(airlineCommand)
   .addCommand(airplaneCommand)

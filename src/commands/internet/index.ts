@@ -22,7 +22,10 @@ import passwordCommand from './password';
 import emojiCommand from './emoji';
 
 const command = new Command('internet')
-  .description(`Module to generate internet related entries.`)
+  .description(
+    `Module to generate internet related entries.
+`,
+  )
   .addCommand(avatarCommand)
   .addCommand(emailCommand)
   .addCommand(exampleEmailCommand)

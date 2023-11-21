@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('lines')
   .description(
-    `Generates the given number lines of lorem separated by \`'\\n'\`.`,
+    `Generates the given number lines of lorem separated by \`'\n'\`.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.lorem.lines());
   });
 

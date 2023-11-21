@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('ingverb')
   .description(
-    `Generates a random hacker/IT verb for continuous actions (en: ing suffix; e.g. hacking).`,
+    `Returns a random hacker/IT verb for continuous actions (en: ing suffix; e.g. hacking).`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.hacker.ingverb());
   });
 

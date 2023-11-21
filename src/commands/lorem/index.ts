@@ -10,7 +10,10 @@ import textCommand from './text';
 import linesCommand from './lines';
 
 const command = new Command('lorem')
-  .description(`Module to generate random texts and words.`)
+  .description(
+    `Module to generate random texts and words.
+`,
+  )
   .addCommand(wordCommand)
   .addCommand(wordsCommand)
   .addCommand(sentenceCommand)

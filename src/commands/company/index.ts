@@ -16,7 +16,10 @@ import bsNounCommand from './bsNoun';
 import buzzNounCommand from './buzzNoun';
 
 const command = new Command('company')
-  .description(`Module to generate company related entries.`)
+  .description(
+    `Module to generate company related entries.
+`,
+  )
   .addCommand(suffixesCommand)
   .addCommand(nameCommand)
   .addCommand(companySuffixCommand)

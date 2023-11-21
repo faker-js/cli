@@ -24,7 +24,10 @@ import technicsCommand from './technics';
 import transportCommand from './transport';
 
 const command = new Command('image')
-  .description(`Module to generate images.`)
+  .description(
+    `Module to generate images.
+`,
+  )
   .addCommand(avatarCommand)
   .addCommand(avatarGitHubCommand)
   .addCommand(avatarLegacyCommand)

@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('hsl')
-  .description(`Generates an HSL color.`)
-  .action(() => {
+  .description(`Returns an HSL color.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.color.hsl());
   });
 

@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('cssSupportedFunction')
-  .description(`Generates a random css supported color function name.`)
-  .action(() => {
+  .description(`Returns a random css supported color function name.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.color.cssSupportedFunction());
   });
 

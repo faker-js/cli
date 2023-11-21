@@ -1,9 +1,12 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('userName')
-  .description(`Generates a username.`)
-  .action(() => {
+  .description(
+    `Generates a username using the given person's name as base.
+`,
+  )
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.internet.userName());
   });
 

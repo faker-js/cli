@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('weekday')
-  .description(`Generates a random day of the week.`)
-  .action(() => {
+  .description(`Returns a random day of the week.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.date.weekday());
   });
 

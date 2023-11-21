@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('snake')
-  .description(`Generates a random snake species.`)
-  .action(() => {
+  .description(`Returns a random snake species.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.animal.snake());
   });
 

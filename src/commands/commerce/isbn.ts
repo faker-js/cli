@@ -1,12 +1,12 @@
 import { Command } from 'commander';
 
-const command = new Command('slug')
+const command = new Command('isbn')
   .description(
-    `Generates a slugified text consisting of the given number of hyphen separated words.`,
+    `Returns a random [ISBN](https://en.wikipedia.org/wiki/ISBN) identifier.`,
   )
   .action(async () => {
     const { faker } = await import('@faker-js/faker/locale/en');
-    console.log(faker.lorem.slug());
+    console.log(faker.commerce.isbn());
   });
 
 export default command;

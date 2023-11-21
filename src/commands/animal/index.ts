@@ -16,7 +16,10 @@ import rodentCommand from './rodent';
 import typeCommand from './type';
 
 const command = new Command('animal')
-  .description(`Module to generate animal related entries.`)
+  .description(
+    `Module to generate animal related entries.
+`,
+  )
   .addCommand(dogCommand)
   .addCommand(catCommand)
   .addCommand(snakeCommand)

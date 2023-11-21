@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('commonFileExt')
-  .description(`Generates a commonly used file extension.`)
-  .action(() => {
+  .description(`Returns a commonly used file extension.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.system.commonFileExt());
   });
 

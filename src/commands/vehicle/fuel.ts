@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('fuel')
-  .description(`Generates a fuel type.`)
-  .action(() => {
+  .description(`Returns a fuel type.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.vehicle.fuel());
   });
 

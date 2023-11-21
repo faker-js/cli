@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('words')
   .description(
-    `Generates a string containing a number of space separated random words.`,
+    `Returns a string containing a number of space separated random words.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.word.words());
   });
 

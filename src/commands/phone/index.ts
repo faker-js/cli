@@ -3,7 +3,10 @@ import numberCommand from './number';
 import imeiCommand from './imei';
 
 const command = new Command('phone')
-  .description(`Module to generate phone-related data.`)
+  .description(
+    `Module to generate phone-related data.
+`,
+  )
   .addCommand(numberCommand)
   .addCommand(imeiCommand);
 

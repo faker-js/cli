@@ -7,7 +7,10 @@ import commitShaCommand from './commitSha';
 import shortShaCommand from './shortSha';
 
 const command = new Command('git')
-  .description(`Module to generate git related entries.`)
+  .description(
+    `Module to generate git related entries.
+`,
+  )
   .addCommand(branchCommand)
   .addCommand(commitEntryCommand)
   .addCommand(commitMessageCommand)

@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('department')
-  .description(`Generates a department inside a shop.`)
-  .action(() => {
+  .description(`Returns a department inside a shop.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.commerce.department());
   });
 

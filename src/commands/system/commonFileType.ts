@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('commonFileType')
-  .description(`Generates a commonly used file type.`)
-  .action(() => {
+  .description(`Returns a commonly used file type.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.system.commonFileType());
   });
 

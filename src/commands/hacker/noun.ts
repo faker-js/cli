@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('noun')
-  .description(`Generates a random hacker/IT noun.`)
-  .action(() => {
+  .description(`Returns a random hacker/IT noun.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.hacker.noun());
   });
 

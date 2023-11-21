@@ -7,7 +7,10 @@ import ingverbCommand from './ingverb';
 import phraseCommand from './phrase';
 
 const command = new Command('hacker')
-  .description(`Module to generate hacker/IT words and phrases.`)
+  .description(
+    `Module to generate hacker/IT words and phrases.
+`,
+  )
   .addCommand(abbreviationCommand)
   .addCommand(adjectiveCommand)
   .addCommand(nounCommand)

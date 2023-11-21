@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('currencyName')
-  .description(`Generates a random currency name.`)
-  .action(() => {
+  .description(`Returns a random currency name.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.finance.currencyName());
   });
 

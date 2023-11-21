@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('genre')
-  .description(`Generates a random music genre.`)
-  .action(() => {
+  .description(`Returns a random music genre.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.music.genre());
   });
 

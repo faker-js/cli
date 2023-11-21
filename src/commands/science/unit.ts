@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('unit')
-  .description(`Generates a random scientific unit.`)
-  .action(() => {
+  .description(`Returns a random scientific unit.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.science.unit());
   });
 

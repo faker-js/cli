@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('collation')
-  .description(`Generates a random database collation.`)
-  .action(() => {
+  .description(`Returns a random database collation.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.database.collation());
   });
 

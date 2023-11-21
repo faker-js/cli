@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('productAdjective')
-  .description(`Generates an adjective describing a product.`)
-  .action(() => {
+  .description(`Returns an adjective describing a product.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.commerce.productAdjective());
   });
 

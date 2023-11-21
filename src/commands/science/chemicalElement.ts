@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('chemicalElement')
-  .description(`Generates a random periodic table element.`)
-  .action(() => {
+  .description(`Returns a random periodic table element.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.science.chemicalElement());
   });
 

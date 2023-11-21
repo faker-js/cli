@@ -6,7 +6,10 @@ import engineCommand from './engine';
 import mongodbObjectIdCommand from './mongodbObjectId';
 
 const command = new Command('database')
-  .description(`Module to generate database related entries.`)
+  .description(
+    `Module to generate database related entries.
+`,
+  )
   .addCommand(columnCommand)
   .addCommand(typeCommand)
   .addCommand(collationCommand)

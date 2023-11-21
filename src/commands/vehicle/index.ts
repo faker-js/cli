@@ -10,7 +10,10 @@ import vrmCommand from './vrm';
 import bicycleCommand from './bicycle';
 
 const command = new Command('vehicle')
-  .description(`Module to generate vehicle related entries.`)
+  .description(
+    `Module to generate vehicle related entries.
+`,
+  )
   .addCommand(vehicleCommand)
   .addCommand(manufacturerCommand)
   .addCommand(modelCommand)

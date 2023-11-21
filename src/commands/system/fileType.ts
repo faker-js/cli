@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('fileType')
-  .description(`Generates a file type.`)
-  .action(() => {
+  .description(`Returns a file type.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.system.fileType());
   });
 

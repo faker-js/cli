@@ -3,7 +3,10 @@ import chemicalElementCommand from './chemicalElement';
 import unitCommand from './unit';
 
 const command = new Command('science')
-  .description(`Module to generate science related entries.`)
+  .description(
+    `Module to generate science related entries.
+`,
+  )
   .addCommand(chemicalElementCommand)
   .addCommand(unitCommand);
 

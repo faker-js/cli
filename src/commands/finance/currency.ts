@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('currency')
   .description(
-    `Generates a random currency object, containing \`code\`, \`name \`and \`symbol\` properties.`,
+    `Returns a random currency object, containing \`code\`, \`name \`and \`symbol\` properties.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.finance.currency());
   });
 

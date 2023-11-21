@@ -1,9 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('email')
-  .description(`Generates an email address.`)
-  .action(() => {
+  .description(
+    `Generates an email address using the given person's name as base.`,
+  )
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.internet.email());
   });
 

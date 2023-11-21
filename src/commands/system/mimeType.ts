@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('mimeType')
-  .description(`Generates a mime-type.`)
-  .action(() => {
+  .description(`Returns a mime-type.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.system.mimeType());
   });
 

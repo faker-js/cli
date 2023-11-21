@@ -1,9 +1,12 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('sex')
-  .description(`Generates a random sex.`)
-  .action(() => {
+  .description(
+    `Returns a random sex.
+`,
+  )
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.person.sex());
   });
 

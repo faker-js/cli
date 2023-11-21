@@ -59,12 +59,12 @@ async function generateMethodCommandText(
 
   return format(
     `import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command("${methodName}")
   .description(\`${simplyDescription}\`)
-  .action(() => {
-    console.log(faker['${moduleName}']['${methodName}']());
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
+    console.log(faker.${moduleName}.${methodName}());
   });
 
 export default command;`,

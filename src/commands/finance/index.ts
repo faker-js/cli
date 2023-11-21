@@ -23,7 +23,10 @@ import bicCommand from './bic';
 import transactionDescriptionCommand from './transactionDescription';
 
 const command = new Command('finance')
-  .description(`Module to generate finance and money related entries.`)
+  .description(
+    `Module to generate finance and money related entries.
+`,
+  )
   .addCommand(accountCommand)
   .addCommand(accountNumberCommand)
   .addCommand(accountNameCommand)

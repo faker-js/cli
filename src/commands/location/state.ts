@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('state')
   .description(
-    `Generates a random localized state, or other equivalent first-level administrative entity for the locale's country such as a province or region.`,
+    `Returns a random localized state, or other equivalent first-level administrative entity for the locale's country such as a province or region.`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.location.state());
   });
 

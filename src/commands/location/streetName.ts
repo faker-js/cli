@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('streetName')
-  .description(`Generates a random localized street name.`)
-  .action(() => {
+  .description(`Returns a random localized street name.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.location.streetName());
   });
 

@@ -1,11 +1,11 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('catchPhraseAdjective')
   .description(
-    `Generates a random catch phrase adjective that can be displayed to an end user.`,
+    `Returns a random catch phrase adjective that can be displayed to an end user..`,
   )
-  .action(() => {
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.company.catchPhraseAdjective());
   });
 

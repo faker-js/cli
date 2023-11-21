@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('cron')
-  .description(`Generates a random cron expression.`)
-  .action(() => {
+  .description(`Returns a random cron expression.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.system.cron());
   });
 

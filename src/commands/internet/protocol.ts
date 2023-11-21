@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('protocol')
-  .description(`Generates a random web protocol. Either \`http\` or \`https\`.`)
-  .action(() => {
+  .description(`Returns a random web protocol. Either \`http\` or \`https\`.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.internet.protocol());
   });
 

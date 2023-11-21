@@ -1,9 +1,9 @@
 import { Command } from 'commander';
-import { faker } from '@faker-js/faker';
 
 const command = new Command('month')
-  .description(`Generates a random name of a month.`)
-  .action(() => {
+  .description(`Returns a random name of a month.`)
+  .action(async () => {
+    const { faker } = await import('@faker-js/faker/locale/en');
     console.log(faker.date.month());
   });
 

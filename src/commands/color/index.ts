@@ -12,7 +12,10 @@ import lchCommand from './lch';
 import colorByCSSColorSpaceCommand from './colorByCSSColorSpace';
 
 const command = new Command('color')
-  .description(`Module to generate colors.`)
+  .description(
+    `Module to generate colors.
+`,
+  )
   .addCommand(humanCommand)
   .addCommand(spaceCommand)
   .addCommand(cssSupportedFunctionCommand)
