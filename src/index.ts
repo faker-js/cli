@@ -28,8 +28,6 @@ async function getFunctionByName(functionName: string): Promise<() => unknown> {
 
       return entry;
     }
-
-    console.groupEnd();
   }
 
   throw new Error(
