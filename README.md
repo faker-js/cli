@@ -49,7 +49,7 @@ This example would print a first name of the German locale.
 # Support for All Parameters of `@faker-js/faker` Natively
 
 This CLI is an MVP, currently.
-This means that it does the bear minimum.
+This means that it does the bare minimum.
 If you want an integer in a specific range, you are on your own.
 
 In the future such a feature could look like this:
