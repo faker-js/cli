@@ -5,34 +5,45 @@ function isObject(value: unknown): value is object {
   return typeof value === 'object';
 }
 
-function isFunction(value: unknown): value is () => unknown {
+type AnyFunction = (...args: unknown[]) => unknown;
+
+function isAnyFunction(value: unknown): value is AnyFunction {
   return typeof value === 'function';
 }
 
-async function getFunctionByName(functionName: string): Promise<() => unknown> {
+function createArgumentError(
+  argumentName: string,
+  originalValue: unknown,
+): Error {
+  return new Error(
+    `Invalid "${argumentName}" argument. A string value is required but found ${JSON.stringify(
+      originalValue,
+    )}.`,
+  );
+}
+
+function getValueByKey(obj: object, key: string): unknown {
+  return Object.entries(obj)
+    .find(([objectKey]) => objectKey === key)
+    ?.at(1);
+}
+
+async function getFunction(
+  moduleName: string,
+  functionName: string,
+): Promise<AnyFunction> {
   const { faker } = await import('@faker-js/faker/locale/en');
-  for (const module of Object.values(faker)) {
-    if (!isObject(module)) {
-      continue;
-    }
-
-    for (const entry of Object.values(module)) {
-      if (!isFunction(entry)) {
-        continue;
-      }
-
-      // we need to use "includes" since the function names are "bound functionName"
-      if (!entry.name.includes(functionName)) {
-        continue;
-      }
-
-      return entry;
-    }
+  const moduleRef: unknown = getValueByKey(faker, moduleName);
+  if (!isObject(moduleRef)) {
+    throw new Error(`There is no module with the name "${moduleName}".`);
   }
 
-  throw new Error(
-    `You tried to generate a value with the function name "${functionName}", but this name does not exist in Faker. Please checkout their documentation (https://fakerjs.dev) to look for available functions.`,
-  );
+  const entry: unknown = getValueByKey(moduleRef, functionName);
+  if (!isAnyFunction(entry)) {
+    throw new Error(`There is no function with the name "${functionName}".`);
+  }
+
+  return entry;
 }
 
 export function cli(args: string[]) {
@@ -40,18 +51,18 @@ export function cli(args: string[]) {
     .name('faker')
     .version(version)
     .description(description)
-    .argument(
-      '<functionName>',
-      'The function name that Faker uses to generate a value.',
-    )
-    .action(async (functionName) => {
-      if (typeof functionName !== 'string') {
-        throw new Error(
-          `Invalid "functionName" argument. A string value is required but found ${functionName}.`,
-        );
+    .argument('<moduleName>', 'The name of the module to invoke.')
+    .argument('<functionName>', 'The name of the function to invoke.')
+    .action(async (moduleName, functionName) => {
+      if (typeof moduleName !== 'string') {
+        throw createArgumentError('moduleName', moduleName);
       }
 
-      const fn = await getFunctionByName(functionName);
+      if (typeof functionName !== 'string') {
+        throw createArgumentError('functionName', functionName);
+      }
+
+      const fn = await getFunction(moduleName, functionName);
       console.log(fn());
     });
 
