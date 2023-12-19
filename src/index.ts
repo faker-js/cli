@@ -3,12 +3,6 @@ import { description, version } from '../package.json';
 import { ArgumentError } from './errors/argument.error';
 import { ReferenceError } from './errors/reference.error';
 
-type AnyFunction = (...args: unknown[]) => unknown;
-
-function isAnyFunction(value: unknown): value is AnyFunction {
-  return typeof value === 'function';
-}
-
 function getValueByKey(obj: object, key: string): unknown {
   return Object.entries(obj)
     .find(([objectKey]) => objectKey === key)
@@ -38,7 +32,7 @@ export function cli(args: string[]) {
       }
 
       const entry = getValueByKey(moduleRef, functionName);
-      if (!isAnyFunction(entry)) {
+      if (typeof entry !== 'function') {
         throw new ReferenceError('function', functionName);
       }
 
