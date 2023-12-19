@@ -1,10 +1,6 @@
 import { Command } from 'commander';
 import { description, version } from '../package.json';
 
-function isObject(value: unknown): value is object {
-  return typeof value === 'object';
-}
-
 type AnyFunction = (...args: unknown[]) => unknown;
 
 function isAnyFunction(value: unknown): value is AnyFunction {
@@ -34,7 +30,7 @@ async function getFunction(
 ): Promise<AnyFunction> {
   const { faker } = await import('@faker-js/faker/locale/en');
   const moduleRef: unknown = getValueByKey(faker, moduleName);
-  if (!isObject(moduleRef)) {
+  if (typeof moduleRef !== 'object' || moduleRef === null) {
     throw new Error(`There is no module with the name "${moduleName}".`);
   }
 
