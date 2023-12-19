@@ -2,7 +2,7 @@
 
 A CLI of [@faker-js/faker](https://github.com/faker-js/faker).
 
-> **Note :information_source:**: This is currently a [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product).
+> **:information_source: Note**: This is currently a [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product).
 
 ## Install
 
@@ -16,7 +16,7 @@ npm install --save-dev @faker-js/cli
 npx faker <moduleName> <functionName>
 ```
 
-> **Note :information_source:**: [Read more about `npx`](https://docs.npmjs.com/cli/v7/commands/npx)
+> **:information_source: Note**: [Read more about `npx`](https://docs.npmjs.com/cli/v7/commands/npx)
 
 Faker-CLI expects a `moduleName` as well as a `functionName` argument.
 This is equivalent to calling `faker[moduleName][functionName]`.
