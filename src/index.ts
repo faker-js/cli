@@ -41,12 +41,12 @@ export function cli(args: string[]) {
       }
 
       const { faker } = await import('@faker-js/faker/locale/en');
-      const moduleRef: unknown = getValueByKey(faker, moduleName);
+      const moduleRef = getValueByKey(faker, moduleName);
       if (typeof moduleRef !== 'object' || moduleRef === null) {
         throw new Error(`There is no module with the name "${moduleName}".`);
       }
 
-      const entry: unknown = getValueByKey(moduleRef, functionName);
+      const entry = getValueByKey(moduleRef, functionName);
       if (!isAnyFunction(entry)) {
         throw new Error(
           `There is no function with the name "${functionName}".`,
