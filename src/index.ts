@@ -24,24 +24,6 @@ function getValueByKey(obj: object, key: string): unknown {
     ?.at(1);
 }
 
-async function getFunction(
-  moduleName: string,
-  functionName: string,
-): Promise<AnyFunction> {
-  const { faker } = await import('@faker-js/faker/locale/en');
-  const moduleRef: unknown = getValueByKey(faker, moduleName);
-  if (typeof moduleRef !== 'object' || moduleRef === null) {
-    throw new Error(`There is no module with the name "${moduleName}".`);
-  }
-
-  const entry: unknown = getValueByKey(moduleRef, functionName);
-  if (!isAnyFunction(entry)) {
-    throw new Error(`There is no function with the name "${functionName}".`);
-  }
-
-  return entry;
-}
-
 export function cli(args: string[]) {
   const program = new Command()
     .name('faker')
@@ -58,8 +40,20 @@ export function cli(args: string[]) {
         throw createArgumentError('functionName', functionName);
       }
 
-      const fn = await getFunction(moduleName, functionName);
-      console.log(fn());
+      const { faker } = await import('@faker-js/faker/locale/en');
+      const moduleRef: unknown = getValueByKey(faker, moduleName);
+      if (typeof moduleRef !== 'object' || moduleRef === null) {
+        throw new Error(`There is no module with the name "${moduleName}".`);
+      }
+
+      const entry: unknown = getValueByKey(moduleRef, functionName);
+      if (!isAnyFunction(entry)) {
+        throw new Error(
+          `There is no function with the name "${functionName}".`,
+        );
+      }
+
+      console.log(entry());
     });
 
   program.parse(args);
