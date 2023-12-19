@@ -18,6 +18,15 @@ function createArgumentError(
   );
 }
 
+function createReferenceError(
+  argumentName: 'module' | 'function',
+  argumentValue: string,
+) {
+  return new Error(
+    `There is no ${argumentName} with the name "${argumentValue}".`,
+  );
+}
+
 function getValueByKey(obj: object, key: string): unknown {
   return Object.entries(obj)
     .find(([objectKey]) => objectKey === key)
@@ -43,14 +52,12 @@ export function cli(args: string[]) {
       const { faker } = await import('@faker-js/faker/locale/en');
       const moduleRef = getValueByKey(faker, moduleName);
       if (typeof moduleRef !== 'object' || moduleRef === null) {
-        throw new Error(`There is no module with the name "${moduleName}".`);
+        throw createReferenceError('module', moduleName);
       }
 
       const entry = getValueByKey(moduleRef, functionName);
       if (!isAnyFunction(entry)) {
-        throw new Error(
-          `There is no function with the name "${functionName}".`,
-        );
+        throw createReferenceError('function', functionName);
       }
 
       console.log(entry());
