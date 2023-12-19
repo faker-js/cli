@@ -1,30 +1,12 @@
 import { Command } from 'commander';
 import { description, version } from '../package.json';
+import { ArgumentError } from './errors/argument.error';
+import { ReferenceError } from './errors/reference.error';
 
 type AnyFunction = (...args: unknown[]) => unknown;
 
 function isAnyFunction(value: unknown): value is AnyFunction {
   return typeof value === 'function';
-}
-
-function createArgumentError(
-  argumentName: string,
-  originalValue: unknown,
-): Error {
-  return new Error(
-    `Invalid "${argumentName}" argument. A string value is required but found ${JSON.stringify(
-      originalValue,
-    )}.`,
-  );
-}
-
-function createReferenceError(
-  argumentName: 'module' | 'function',
-  argumentValue: string,
-) {
-  return new Error(
-    `There is no ${argumentName} with the name "${argumentValue}".`,
-  );
 }
 
 function getValueByKey(obj: object, key: string): unknown {
@@ -42,22 +24,22 @@ export function cli(args: string[]) {
     .argument('<functionName>', 'The name of the function to invoke.')
     .action(async (moduleName, functionName) => {
       if (typeof moduleName !== 'string') {
-        throw createArgumentError('moduleName', moduleName);
+        throw new ArgumentError('moduleName', moduleName);
       }
 
       if (typeof functionName !== 'string') {
-        throw createArgumentError('functionName', functionName);
+        throw new ArgumentError('functionName', functionName);
       }
 
       const { faker } = await import('@faker-js/faker/locale/en');
       const moduleRef = getValueByKey(faker, moduleName);
       if (typeof moduleRef !== 'object' || moduleRef === null) {
-        throw createReferenceError('module', moduleName);
+        throw new ReferenceError('module', moduleName);
       }
 
       const entry = getValueByKey(moduleRef, functionName);
       if (!isAnyFunction(entry)) {
-        throw createReferenceError('function', functionName);
+        throw new ReferenceError('function', functionName);
       }
 
       console.log(entry());
