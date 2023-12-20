@@ -30,40 +30,38 @@ If you want a integer you can run:
 npx faker number int
 ```
 
-## Whats next
+## What's Next?
 
 Upcoming features might include:
 
 ### :hammer_and_wrench: Localization
 
-You should be able to provide a specific locale for localized data.
-Currently, the CLI will always use the default `en` locale.
-This feature could look like this:
+Users will be able to specify a locale for localized data.
+Currently, the CLI always uses the default `en` locale.
+In the future, this feature could be implemented as follows:
 
 ```bash
 npx faker --locale de person firstName
 ```
 
-This example would print a first name of the German locale.
+This example would print a first name from the German locale.
 
 ### :hammer_and_wrench: Support for All Parameters of `@faker-js/faker` Natively
 
-This CLI is an MVP, currently.
-This means that it does the bare minimum.
-If you want an integer in a specific range, you are on your own.
-
-In the future such a feature could look like this:
+This CLI is currently in its MVP stage, which means that it only performs the bare minimum.
+If you need an integer within a specific range, you'll have to do it yourself.
+In the future, this feature could be implemented as follows:
 
 ```bash
 npx faker number int --min 10 --max 20
 ```
 
-This example will print an integer between 10 and 20.
-`min` and `max` are options that are available in [Faker's int options](https://fakerjs.dev/api/number.html#int).
+This example will generate an integer between 10 and 20.
+The `min` and `max` options are available in [Faker's int options](https://fakerjs.dev/api/number.html#int).
 
 ### :hammer_and_wrench: Better Documentation in the Terminal
 
-Developers usually hate to switch work environments.
-If you are already working in the terminal, you likely don't want to leave to check what to look up a little detail.
-Instead you expect the CLI to have a proper `--help` documentation, including examples.
-In the future, this should be the case.
+Developers often dislike changing work environments.
+If you're already working in the terminal, you probably don't want to leave it to look up a small detail.
+Instead, you expect the CLI to have a proper `--help` documentation that includes examples.
+This will be the case in the future.
