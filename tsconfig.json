@@ -10,7 +10,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": [
     "src/**/*.ts"
