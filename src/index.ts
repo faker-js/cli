@@ -36,6 +36,8 @@ export function cli(args: string[]) {
         throw new ReferenceError('function', functionName);
       }
 
+      // TODO: Need to figure out how to strictly type this function call
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       console.log(entry());
     });
 
