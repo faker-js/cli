@@ -9,7 +9,7 @@
   ],
   "labels": ["c: dependencies"],
   "reviewersFromCodeOwners": true,
-  "rangeStrategy": "bump",
+  "rangeStrategy": "pin",
   "dependencyDashboard": true,
   "packageRules": [
     {
