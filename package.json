@@ -2,6 +2,7 @@
   "name": "@faker-js/cli",
   "version": "0.0.0",
   "description": "A CLI of @faker-js/faker.",
+  "type": "module",
   "bin": {
     "@faker-js/cli": "bin/faker.js",
     "faker": "bin/faker.js"
@@ -47,11 +48,10 @@
   "bugs": "https://github.com/faker-js/cli/issues",
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "7.16.0",
-    "@typescript-eslint/parser": "7.16.0",
-    "eslint": "8.57.0",
+    "eslint": "9.39.2",
     "prettier": "3.7.4",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.50.1"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
