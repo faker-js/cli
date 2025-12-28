@@ -54,7 +54,7 @@
     "typescript-eslint": "8.50.1"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.4.1",
-    "commander": "^11.1.0"
+    "@faker-js/faker": "8.4.1",
+    "commander": "11.1.0"
   }
 }
