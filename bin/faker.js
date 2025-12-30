@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('../dist/src/index.js').cli(process.argv);
+import('../dist/src/index.js').then(({ cli }) => cli(process.argv));

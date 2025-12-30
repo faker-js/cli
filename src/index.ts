@@ -1,14 +1,14 @@
 import { Command } from 'commander';
-import { description, version } from '../package.json';
-import { API } from './api';
-import { ArgumentError } from './errors/argument.error';
-import { ReferenceError } from './errors/reference.error';
+import packageJson from '../package.json' with { type: 'json' };
+import { API } from './api.js';
+import { ArgumentError } from './errors/argument.error.js';
+import { ReferenceError } from './errors/reference.error.js';
 
 export function cli(args: string[]) {
   const program = new Command()
     .name('faker')
-    .version(version)
-    .description(description)
+    .version(packageJson.version)
+    .description(packageJson.description)
     .argument('<moduleName>', 'The name of the module to invoke.')
     .argument('<functionName>', 'The name of the function to invoke.')
     .action((moduleName, functionName) => {
