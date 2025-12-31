@@ -4,8 +4,8 @@ import { API } from './api.js';
 import { ArgumentError } from './errors/argument.error.js';
 import { ReferenceError } from './errors/reference.error.js';
 
-export function cli(args: string[]) {
-  const program = new Command()
+function buildProgram(): Command {
+  return new Command()
     .name('faker')
     .version(packageJson.version)
     .description(packageJson.description)
@@ -31,13 +31,23 @@ export function cli(args: string[]) {
       }
 
       process.stdout.write(String(entryRef()));
-      process.exit(0);
     });
+}
 
-  const hasArgs = args.length > 2;
-  if (!hasArgs) {
-    program.help();
-  } else {
-    program.parse(args);
+export function cli(args: string[]) {
+  try {
+    const program = buildProgram();
+
+    const hasArgs = args.length > 2;
+    if (!hasArgs) {
+      program.help();
+    } else {
+      program.parse(args);
+    }
+
+    process.exit(0);
+  } catch (error) {
+    process.stderr.write(String(error));
+    process.exit(1);
   }
 }
