@@ -30,7 +30,8 @@ export function cli(args: string[]) {
         throw new ReferenceError('function', moduleName);
       }
 
-      console.log(entryRef());
+      process.stdout.write(String(entryRef()));
+      process.exit(0);
     });
 
   const hasArgs = args.length > 2;
