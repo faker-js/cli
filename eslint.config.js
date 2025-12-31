@@ -1,5 +1,6 @@
 import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -7,6 +8,12 @@ export default defineConfig(
     name: 'linter options',
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
+    },
+  },
+  {
+    name: 'Global Language Options',
+    languageOptions: {
+      globals: globals.node,
     },
   },
   {
