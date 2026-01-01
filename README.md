@@ -13,13 +13,17 @@ npm install --save-dev @faker-js/cli
 ## Usage
 
 ```
-npx faker <moduleName> <functionName>
+npx faker [--module <moduleName>] <functionName>
 ```
 
 > **:information_source: Note**: [Read more about `npx`](https://docs.npmjs.com/cli/v7/commands/npx)
 
-Faker-CLI expects a `moduleName` as well as a `functionName` argument.
-This is equivalent to calling `faker[moduleName][functionName]`.
+Faker-CLI expects a `functionName` argument.
+An additional, optional `--module` (or short `-m`) might be provided in case of naming collisions for `functionName`.
+
+This is equivalent to calling `faker[moduleName][functionName]` in any JavaScript environment.
+If no module option was given, the CLI will search through faker to find an appropriate function for your provided `functionName`.
+
 Checkout [Fakers's API](https://fakerjs.dev/api/) for information on which modules and functions are available.
 
 ## Examples
@@ -27,7 +31,13 @@ Checkout [Fakers's API](https://fakerjs.dev/api/) for information on which modul
 If you want a integer you can run:
 
 ```bash
-npx faker number int
+npx faker int
+```
+
+of
+
+```bash
+npx faker -m number int
 ```
 
 ## What's Next?
@@ -41,7 +51,7 @@ Currently, the CLI always uses the default `en` locale.
 In the future, this feature could be implemented as follows:
 
 ```bash
-npx faker --locale de person firstName
+npx faker --locale de -m person firstName
 ```
 
 This example would print a first name from the German locale.
@@ -53,7 +63,7 @@ If you need an integer within a specific range, you'll have to do it yourself.
 In the future, this feature could be implemented as follows:
 
 ```bash
-npx faker number int --min 10 --max 20
+npx faker -m number int --min 10 --max 20
 ```
 
 This example will generate an integer between 10 and 20.

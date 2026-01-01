@@ -5,7 +5,7 @@
 
 import { faker } from '@faker-js/faker/locale/en';
 
-export const API: Record<string, Record<string, () => unknown>> = {
+export const API = {
   datatype: { boolean: () => faker.datatype.boolean() },
   date: {
     month: () => faker.date.month(),
@@ -291,4 +291,4 @@ export const API: Record<string, Record<string, () => unknown>> = {
     sample: () => faker.word.sample(),
     words: () => faker.word.words(),
   },
-};
+} satisfies Record<string, Record<string, () => unknown>>;

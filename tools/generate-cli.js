@@ -110,7 +110,7 @@ async function generateApi() {
 
     import { faker } from '@faker-js/faker/locale/en';
       
-    export const API: Record<string, Record<string, () => unknown>> = ${apiObjectString};
+    export const API = ${apiObjectString} satisfies Record<string, Record<string, () => unknown>>;
     `,
     // @ts-expect-error migrate to prettier js|ts config file to get type definitions correctly
     { ...prettierConfig, parser: 'typescript' },
