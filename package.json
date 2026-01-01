@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier src --write",
+    "generate:api": "node tools/generate-cli.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
