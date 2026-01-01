@@ -4,7 +4,6 @@
   "description": "A CLI of @faker-js/faker.",
   "type": "module",
   "bin": {
-    "@faker-js/cli": "bin/faker.js",
     "faker": "bin/faker.js"
   },
   "scripts": {
