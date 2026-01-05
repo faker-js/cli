@@ -37,7 +37,8 @@ function actionHandler(this: Command) {
     throw new FunctionReferenceError(functionName, moduleName);
   }
 
-  process.stdout.write(String(entryRef()));
+  const output = String(entryRef());
+  process.stdout.write(output + (process.stdout.isTTY ? '\n' : ''));
 }
 
 export function buildProgram(): Command {
